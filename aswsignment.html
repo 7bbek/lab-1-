@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <table id="Table">
+        
+        <tr> 
+            <td>Row1 Col1</td>
+            <td>Row1 Col2</td>
+        </tr>
+
+        <tr>
+            <td>Row2 Col1</td>
+            <td>Row2 Col2</td>
+        </tr>
+
+        <tr>
+            <td>Row3 Col1</td>
+            <td>Row3 Col2</td>
+        </tr>
+
+        <tr>
+            <td>Row4 Col1</td>
+            <td>Row4 Col2</td>
+        </tr>
+
+        <tr>
+            <td>Row5 Col1</td>
+            <td>Row5 Col2</td>
+        </tr>
+    </table>
+
+    <button onclick="insertRow()">Insert Row</button>
+    <button onclick="deleteRow()">Delete Row</button>
+
+    <script>
+        function insertRow() {
+            var table = document.getElementById("Table");
+            var rowNumber = table.rows.length;
+            var row = table.insertRow(rowNumber);
+            
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            
+            cell1.innerHTML = "Row" + rowNumber + " Col1";
+            cell2.innerHTML = "Row" + rowNumber + " Col2";
+        }
+
+        function deleteRow() {
+            var table = document.getElementById("Table");
+            if(table.rows.length > 1) {
+                table.deleteRow(table.rows.length - 1);
+            } else {
+                alert(" Last row cannot be deleted.");
+            }
+            updateMessageLabel();
+        
+        }
+    </script>
+</body>
+</html>
+
+
